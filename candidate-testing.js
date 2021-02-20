@@ -3,42 +3,63 @@ const input = require('readline-sync');
 // TODO 2: modify your quiz app to ask 5 questions //
 
 // TODO 1.1a: Define candidateName // 
-let candidateName;
+let candidateName = '';
 // TODO 1.2a: Define question, correctAnswer, and candidateAnswer //
-let question;
-let correctAnswer;
-let candidateAnswer;
-let questions;
-let correctAnswers;
-let candidateAnswers;
-
+let question = "Who was the first American woman in space? ";
+let correctAnswer = "Sally Ride";
+let candidateAnswer = '';
+let questions = ["1. Who was the first American woman in space? ",
+     "2. True or False:5000 meters = 5 kilometers : ",
+     "3. (5+3)/2*10 = ? : ",
+     "4. Given the array [8, 'Orbit', 'Trajectory', 45],what  entry is at index2? : ",
+     "5. What is the crew size for the ISS? : " ];
+let correctAnswers = ["Sally Ride", "True", "40", "Trajectory", "3"];
+let candidateAnswers = [];
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
-
+  candidateName = input.question("Enter your name: ");
 }
 
 function askQuestion() {
   // TODO 1.2b: Ask candidate the question and assign the response as candidateAnswer //
-
-
+  //candidateAnswer = input.question(question);
+  for (i=0; i < questions.length; i++){
+    candidateAnswers[i] = input.question(questions[i]);
+    console.log("Your Answer: ", candidateAnswers[i]);
+    console.log("Correct Answer: ", correctAnswers[i]);
+    console.log('\n');
+  }
 }
 
 function gradeQuiz(candidateAnswers) {
 
   // TODO 1.2c: Let the candidate know if they have answered the question correctly or incorrectly // 
-
-
-  let grade;
-  
-
+  let grade = '';
+  let numCorrectAnswers = 0;
+  for(i=0; i<questions.length; i++){
+  if (candidateAnswers[i].toUpperCase() === correctAnswers[i].toUpperCase()){
+   // console.log("Great job! Your answer is correct.");
+    numCorrectAnswers = numCorrectAnswers + 1;
+  } else if(candidateAnswers[i] !== correctAnswers[i]){
+    //console.log("Try again! Your answer in not correct.");
+  }
+  }
+  grade = (numCorrectAnswers / questions.length * 100);
+  console.log(`>>> Overall Grade: ${grade}% (${numCorrectAnswers} of ${questions.length} responses correct)<<<`);
+  if (grade >= '80'){
+    console.log(">>> Status : PASSED <<<");
+  }else {
+    console.log(">>> Status : FAILED <<<");
+  }
   return grade;
 }
 
 function runProgram() {
   askForName();
   // TODO 1.1c: Ask for candidate's name //
-  
+  console.log("Hello , " , candidateName);
+  console.log('\n');
   askQuestion();
   gradeQuiz(this.candidateAnswers);
 }
