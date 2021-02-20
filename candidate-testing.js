@@ -26,7 +26,7 @@ function askQuestion() {
   //candidateAnswer = input.question(question);
   for (i=0; i < questions.length; i++){
     candidateAnswers[i] = input.question(questions[i]);
-    console.log("Your Answer: ", candidateAnswers[i]);
+    console.log("Your Answer: ",candidateAnswers[i]);
     console.log("Correct Answer: ", correctAnswers[i]);
     console.log('\n');
   }
