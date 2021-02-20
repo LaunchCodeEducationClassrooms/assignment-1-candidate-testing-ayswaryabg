@@ -14,7 +14,7 @@ let questions = ["1. Who was the first American woman in space? ",
      "4. Given the array [8, 'Orbit', 'Trajectory', 45],what  entry is at index2? : ",
      "5. What is the crew size for the ISS? : " ];
 let correctAnswers = ["Sally Ride", "True", "40", "Trajectory", "3"];
-let candidateAnswers = [];
+let candidateAnswers = [] ;
 
 function askForName() {
   // TODO 1.1b: Ask for candidate's name //
